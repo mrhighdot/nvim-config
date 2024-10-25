@@ -6,10 +6,12 @@ local comments = require 'custom.plugins.ts_comments.ts_comment'
 local todo = require 'custom.plugins.todo.todo'
 local noice = require 'custom.plugins.noice.noice'
 local pairs = require 'custom.plugins.pairs.autopairs'
+local dashboard = require 'custom.plugins.dashboard.dashboard'
 
 return {
   comments,
   todo,
   noice,
   pairs,
+  dashboard,
 }

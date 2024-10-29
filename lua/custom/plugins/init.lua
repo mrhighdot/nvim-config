@@ -7,6 +7,7 @@ local todo = require 'custom.plugins.todo.todo'
 local noice = require 'custom.plugins.noice.noice'
 local pairs = require 'custom.plugins.pairs.autopairs'
 local dashboard = require 'custom.plugins.dashboard.dashboard'
+local copilot = require 'custom.plugins.github.copilot'
 
 return {
   comments,
@@ -14,4 +15,5 @@ return {
   noice,
   pairs,
   dashboard,
+  copilot
 }

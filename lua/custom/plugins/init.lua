@@ -8,7 +8,9 @@ local noice = require 'custom.plugins.noice.noice'
 local pairs = require 'custom.plugins.pairs.autopairs'
 local dashboard = require 'custom.plugins.dashboard.dashboard'
 local copilot = require 'custom.plugins.github.copilot'
-local theme = require 'custom.plugins.theme.theme'
+-- local theme = require 'custom.plugins.theme.theme'
+local theme = require 'custom.plugins.theme.ac-theme'
+-- local test_theme = require 'custom.plugins.theme.ac-theme-new'
 
 return {
   comments,

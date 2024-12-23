@@ -10,6 +10,7 @@ local dashboard = require 'custom.plugins.dashboard.dashboard'
 local copilot = require 'custom.plugins.github.copilot'
 -- local theme = require 'custom.plugins.theme.theme'
 local theme = require 'custom.plugins.theme.ac-theme'
+local coc = require 'custom.plugins.coc.coc'
 -- local test_theme = require 'custom.plugins.theme.ac-theme-new'
 
 return {
@@ -19,4 +20,5 @@ return {
   dashboard,
   copilot,
   theme,
+  coc,
 }

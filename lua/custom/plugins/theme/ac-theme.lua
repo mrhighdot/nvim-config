@@ -1,10 +1,9 @@
 return {
-  {
-    'shmerl/neogotham',
-    lazy = false, -- to make sure it's loaded on startup
-    priority = 1000, -- to load before other plugins
-    config = function()
-      vim.cmd.colorscheme 'neogotham'
-    end,
-  },
+  'ramojus/mellifluous.nvim',
+  -- version = "v0.*", -- uncomment for stable config (some features might be missed if/when v1 comes out)
+  config = function()
+    require('mellifluous').setup {} -- optional, see configuration section.
+    vim.opt.background = 'dark'
+    vim.cmd 'colorscheme mellifluous'
+  end,
 }

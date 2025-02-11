@@ -8,10 +8,13 @@ local noice = require 'custom.plugins.noice.noice'
 local pairs = require 'custom.plugins.pairs.autopairs'
 local dashboard = require 'custom.plugins.dashboard.dashboard'
 local copilot = require 'custom.plugins.github.copilot'
--- local theme = require 'custom.plugins.theme.theme'
-local theme = require 'custom.plugins.theme.ac-theme'
+local theme = require 'custom.plugins.theme.theme'
+-- local theme = require 'custom.plugins.theme.ac-theme'
 local coc = require 'custom.plugins.coc.coc'
+-- local avante = require 'custom.plugins.avante.avante'
+-- local vscode = require 'custom.plugins.theme.vscode'
 -- local test_theme = require 'custom.plugins.theme.ac-theme-new'
+-- local formatter = require 'custom.plugins.formatter.formatter'
 
 return {
   comments,
@@ -19,6 +22,7 @@ return {
   pairs,
   dashboard,
   copilot,
-  theme,
   coc,
+  theme,
+  -- avante,
 }

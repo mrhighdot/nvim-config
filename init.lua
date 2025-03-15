@@ -630,6 +630,11 @@ require('lazy').setup({
       }
     end,
   },
+  {
+    'vhyrro/luarocks.nvim',
+    priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
+    config = true,
+  },
 
   { -- Autoformat
     'stevearc/conform.nvim',
@@ -653,17 +658,47 @@ require('lazy').setup({
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         return {
-          timeout_ms = 500,
+          timeout_ms = 4500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        blade = { 'blade-formatter' },
+        php = { { 'pint', 'php_cs_fixer' } },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
+      },
+      {
+        -- Add a Treesitter parser for Laravel Blade to provide Blade syntax highlighting.
+        'nvim-treesitter/nvim-treesitter',
+        opts = function(_, opts)
+          vim.list_extend(opts.ensure_installed, {
+            'blade',
+            'php_only',
+          })
+        end,
+        config = function(_, opts)
+          vim.filetype.add {
+            pattern = {
+              ['.*%.blade%.php'] = 'blade',
+            },
+          }
+
+          require('nvim-treesitter.configs').setup(opts)
+          local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+          parser_config.blade = {
+            install_info = {
+              url = 'https://github.com/EmranMR/tree-sitter-blade',
+              files = { 'src/parser.c' },
+              branch = 'main',
+            },
+            filetype = 'blade',
+          }
+        end,
       },
     },
   },
@@ -828,7 +863,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'typescript' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'php', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'typescript' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -838,13 +873,23 @@ require('lazy').setup({
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
         additional_vim_regex_highlighting = { 'ruby' },
       },
-      indent = { enable = true, disable = { 'ruby' } },
+      indent = { enable = true },
     },
     config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup(opts)
+
+      local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+      parser_config.blade = {
+        install_info = {
+          url = 'https://github.com/EmranMR/tree-sitter-blade',
+          files = { 'src/parser.c' },
+          branch = 'main',
+        },
+        filetype = 'blade',
+      }
 
       -- There are additional nvim-treesitter modules that you can use to interact
       -- with nvim-treesitter. You should go explore a few and see what interests you:
@@ -900,8 +945,15 @@ require('lazy').setup({
 })
 
 vim.filetype.add {
-  extension = { ts = 'typescript', js = 'javascriptreact', ejs = 'html', hbs = 'html' },
+  extension = { ts = 'typescript', js = 'javascriptreact', ejs = 'html', hbs = 'html', tsx = 'typescriptreact', handlebars = 'html' },
 }
 
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--   pattern = '*.blade.php',
+--   callback = function()
+--     vim.cmd('!blade-formatter --write ' .. vim.fn.expand '%')
+--   end,
+-- })
+--
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

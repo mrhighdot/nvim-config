@@ -178,10 +178,10 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -652,25 +652,19 @@ require('lazy').setup({
     },
     opts = {
       notify_on_error = false,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        return {
-          timeout_ms = 4500,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-        }
-      end,
+      format_on_save = {
+        timeout_ms = 4500,
+        stop_after_first = true, -- Correct placement
+        lsp_fallback = function(bufnr)
+          local disable_filetypes = { c = true, cpp = true }
+          return not disable_filetypes[vim.bo[bufnr].filetype]
+        end,
+      },
       formatters_by_ft = {
         lua = { 'stylua' },
         blade = { 'blade-formatter' },
-        php = { { 'pint', 'php_cs_fixer' } },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        php = { 'pint', 'php_cs_fixer' },
+        javascript = { 'prettierd', 'prettier' }, -- Fixed syntax
       },
       {
         -- Add a Treesitter parser for Laravel Blade to provide Blade syntax highlighting.
@@ -689,8 +683,7 @@ require('lazy').setup({
           }
 
           require('nvim-treesitter.configs').setup(opts)
-          local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-          parser_config.blade = {
+          require('nvim-treesitter.parsers').get_parser_configs().blade = {
             install_info = {
               url = 'https://github.com/EmranMR/tree-sitter-blade',
               files = { 'src/parser.c' },

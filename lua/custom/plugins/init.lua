@@ -6,7 +6,7 @@ local comments = require 'custom.plugins.ts_comments.ts_comment'
 local todo = require 'custom.plugins.todo.todo'
 local noice = require 'custom.plugins.noice.noice'
 local pairs = require 'custom.plugins.pairs.autopairs'
-local dashboard = require 'custom.plugins.dashboard.dashboard'
+-- local dashboard = require 'custom.plugins.dashboard.dashboard'
 local copilot = require 'custom.plugins.github.copilot'
 local theme = require 'custom.plugins.theme.ac-theme'
 local coc = require 'custom.plugins.coc.coc'
@@ -21,7 +21,6 @@ return {
   comments,
   todo,
   pairs,
-  dashboard,
   copilot,
   coc,
   -- blade,

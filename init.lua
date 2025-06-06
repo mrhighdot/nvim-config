@@ -581,7 +581,7 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {},
+        -- tsserver = {},
         --
 
         lua_ls = {
@@ -652,22 +652,25 @@ require('lazy').setup({
     },
     opts = {
       notify_on_error = false,
-      format_on_save = {
-        timeout_ms = 4500,
-        stop_after_first = true, -- Correct placement
-        lsp_fallback = function(bufnr)
-          local disable_filetypes = { c = true, cpp = true }
-          return not disable_filetypes[vim.bo[bufnr].filetype]
-        end,
-      },
+      format_on_save = function(bufnr)
+        local disable_filetypes = { c = true, cpp = true }
+        if disable_filetypes[vim.bo[bufnr].filetype] then
+          return nil
+        else
+          return {
+            timeout_ms = 500,
+            lsp_format = 'fallback',
+          }
+        end
+      end,
       formatters_by_ft = {
         lua = { 'stylua' },
         blade = { 'blade-formatter' },
         php = { 'pint', 'php_cs_fixer' },
-        javascript = { 'prettierd', 'prettier' },
-        javascriptreact = { 'prettierd', 'prettier' },
-        typescript = { 'prettierd', 'prettier' },
-        typescriptreact = { 'prettierd', 'prettier' },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
       },
       {
         -- Add a Treesitter parser for Laravel Blade to provide Blade syntax highlighting.

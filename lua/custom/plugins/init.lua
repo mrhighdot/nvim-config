@@ -11,11 +11,13 @@ local copilot = require 'custom.plugins.github.copilot'
 -- local theme = require 'custom.plugins.theme.ac-theme'
 local coc = require 'custom.plugins.coc.coc'
 local avante = require 'custom.plugins.avante.avante'
-local vscode = require 'custom.plugins.theme.vscode'
+-- local vscode = require 'custom.plugins.theme.vscode'
+local vscode = require 'custom.plugins.theme.hybrid'
 -- local test_theme = require 'custom.plugins.theme.ac-theme-new'
 -- local formatter = require 'custom.plugins.formatter.formatter'
 local blade = require 'custom.plugins.blade.blade'
 local lg = require 'custom.plugins.lazygit.lazygit'
+local tabby = require 'custom.plugins.tabby.tabby'
 
 return {
   comments,
@@ -28,4 +30,5 @@ return {
   avante,
   -- theme,
   lg,
+  tabby,
 }

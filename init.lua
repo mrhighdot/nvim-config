@@ -653,7 +653,8 @@ require('lazy').setup({
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
-        local disable_filetypes = { c = true, cpp = true }
+        -- languages here or re-enable it for the disabled ones.
+        local disable_filetypes = {}
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
@@ -666,7 +667,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         blade = { 'blade-formatter' },
-        php = { 'pint', 'php_cs_fixer' },
+        php = { 'php_cs_fixer', 'pint' },
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },

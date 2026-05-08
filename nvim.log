@@ -1,0 +1,20 @@
+WRN 2026-04-21T15:41:53.159 ?.213201   socket_watcher_start:177: Failed to remove stale socket /run/user/1000/nvim.213201.0: no such file or directory
+WRN 2026-04-21T15:41:53.159 ?.213201   server_start:197: Failed to start server: no such file or directory: /run/user/1000/
+WRN 2026-04-21T15:42:00.132 ?.213555   socket_watcher_start:177: Failed to remove stale socket /run/user/1000/nvim.213555.0: no such file or directory
+WRN 2026-04-21T15:42:00.132 ?.213555   server_start:197: Failed to start server: no such file or directory: /run/user/1000/
+WRN 2026-04-21T16:01:24.311 ?.230308   socket_watcher_start:177: Failed to remove stale socket /run/user/1000/nvim.230308.0: no such file or directory
+WRN 2026-04-21T16:01:24.311 ?.230308   server_start:197: Failed to start server: no such file or directory: /run/user/1000/
+WRN 2026-04-21T16:02:01.668 ?.230863   socket_watcher_start:177: Failed to remove stale socket /run/user/1000/nvim.230863.0: no such file or directory
+WRN 2026-04-21T16:02:01.668 ?.230863   server_start:197: Failed to start server: no such file or directory: /run/user/1000/
+WRN 2026-04-21T20:29:28.157 ?.156692   socket_watcher_start:177: Failed to remove stale socket /run/user/1000/nvim.156692.0: no such file or directory
+WRN 2026-04-21T20:29:28.157 ?.156692   server_start:197: Failed to start server: no such file or directory: /run/user/1000/
+ERR 2026-04-21T20:29:28.268 ?.156692   vim_mktempdir:3352: tempdir root not owned by current user (root): /tmp/nvim.root
+WRN 2026-04-21T20:29:39.333 ?.156853   socket_watcher_start:177: Failed to remove stale socket /run/user/1000/nvim.156853.0: no such file or directory
+WRN 2026-04-21T20:29:39.333 ?.156853   server_start:197: Failed to start server: no such file or directory: /run/user/1000/
+ERR 2026-04-21T20:29:39.371 ?.156853   vim_mktempdir:3352: tempdir root not owned by current user (root): /tmp/nvim.root
+WRN 2026-04-21T20:29:51.109 ?.157028   socket_watcher_start:177: Failed to remove stale socket /run/user/1000/nvim.157028.0: no such file or directory
+WRN 2026-04-21T20:29:51.109 ?.157028   server_start:197: Failed to start server: no such file or directory: /run/user/1000/
+ERR 2026-04-21T20:29:51.208 ?.157028   vim_mktempdir:3352: tempdir root not owned by current user (root): /tmp/nvim.root
+WRN 2026-04-21T20:31:35.726 ?.157821   socket_watcher_start:177: Failed to remove stale socket /run/user/1000/nvim.157821.0: no such file or directory
+WRN 2026-04-21T20:31:35.726 ?.157821   server_start:197: Failed to start server: no such file or directory: /run/user/1000/
+ERR 2026-04-21T20:31:35.769 ?.157821   vim_mktempdir:3352: tempdir root not owned by current user (root): /tmp/nvim.root

@@ -1,0 +1,33 @@
+return {
+  'windwp/nvim-ts-autotag',
+  event = 'InsertEnter',
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter',
+  },
+  config = function()
+    require('nvim-ts-autotag').setup {
+      opts = {
+        enable_close = true,
+        enable_rename = true,
+        enable_close_on_slash = false,
+      },
+      per_filetype = {
+        blade = {
+          enable_close = true,
+        },
+        javascript = {
+          enable_close = true,
+        },
+        typescript = {
+          enable_close = true,
+        },
+        javascriptreact = {
+          enable_close = true,
+        },
+        typescriptreact = {
+          enable_close = true,
+        },
+      },
+    }
+  end,
+}

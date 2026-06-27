@@ -4,7 +4,7 @@ local noice = require 'custom.plugins.noice.noice'
 local pairs = require 'custom.plugins.pairs.autopairs'
 -- local dashboard = require 'custom.plugins.dashboard.dashboard'
 -- local copilot = require 'custom.plugins.github.copilot'
-local coc = require 'custom.plugins.coc.coc'
+-- local coc = require 'custom.plugins.coc.coc' -- DISABLED: conflicts with nvim-cmp
 local avante = require 'custom.plugins.avante.avante'
 local vscode = require 'custom.plugins.theme.hybrid'
 -- local vscode = require 'custom.plugins.theme.tokyo-dark'
@@ -29,7 +29,7 @@ return {
   todo,
   pairs,
   flutter,
-  coc,
+  -- coc, -- DISABLED: conflicts with nvim-cmp
   blade,
   vscode,
   formatter,
